@@ -1,0 +1,30 @@
+{include file="index/header" /}
+<div class="container-fluid">
+    <div class="row">
+        <div class="card w-100 h-100 border-0 rounded-0">
+            <div class="card-header bg-info text-white">
+                {include file="index/head" /}
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-4 text-center">
+                        <h3 class="text-info"><em>1</em> {:lang('Environment')}</h3>
+                    </div>
+                    <div class="col-md-4 text-center">
+                        <h3 class="text-info"><span class="badge"><em>2</em></span> {:lang('Create the data')}</h3>
+                    </div>
+                    <div class="col-md-4 text-center">
+                        <h3 class="text-info"><span class="badge"><em>3</em></span> {:lang('Finish installation')}</h3>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="jumbotron m-auto bg-white text-center">
+                        <h2 class="text-center mb-5">{:lang('Installation is complete, please wait...')}</h2>
+                        <img src="{$domain}public/common/images/jiazai.gif">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{include file="index/footer" /}

@@ -1,0 +1,95 @@
+{include file="index/header" /}
+<div class="container-fluid">
+    <div class="row">
+        <div class="card w-100 h-100 border-0 rounded-0">
+            <div class="card-header bg-info text-white">
+                {include file="index/head" /}
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-4 text-center">
+                        <h3 class="text-info"><em>1</em> {:lang('Environment')}</h3>
+                    </div>
+                    <div class="col-md-4 text-center">
+                        <h3 class="text-info"><span class="badge"><em>2</em></span> {:lang('Create the data')}</h3>
+                    </div>
+                    <div class="col-md-4 text-center">
+                        <h3 class="text-black-50"><span class="badge"><em>3</em></span> {:lang('Finish installation')}</h3>
+                    </div>
+                </div>
+                <form method="post" action="step3">
+                    <h4>{:lang('Site Information')}</h4><hr>
+                    <div class="form-group">
+                        <label>{:lang('The database server')}：</label>
+                        <input type="text" class="form-control" name="host" value="localhost" required="required">
+                        <small class="form-text text-muted">{:lang('Database server address, usually localhost')}</small>
+                    </div>
+                    <div class="form-group">
+                        <label>{:lang('The database port')}：</label>
+                        <input type="text" class="form-control" name="port" value="3306" required="required">
+                        <small class="form-text text-muted">{:lang('The database server port, typically 3306')}</small>
+                    </div>
+                    <div class="form-group">
+                        <label>{:lang('The database user name')}：</label>
+                        <input type="text" class="form-control" name="user" value="root" required="required">
+                    </div>
+                    <div class="form-group">
+                        <label>{:lang('The database password')}：</label>
+                        <input type="password" class="form-control" name="password" value="">
+                    </div>
+                    <div class="form-group">
+                        <label>{:lang('The database name')}：</label>
+                        <input type="text" class="form-control" name="name" value="jianyu" required="required">
+                        <small class="form-text text-muted">{:lang('If you use an existing database, replace it with the actual database name')}</small>
+                    </div>
+                    <div class="form-group">
+                        <label>{:lang('Database table prefix')}：</label>
+                        <input type="text" class="form-control" name="prefix" value="jianyu_" required="required">
+                    </div>
+                    <div class="form-group">
+                        <label>{:lang('Site title')}：</label>
+                        <input type="text" class="form-control" name="biaoti" value="剑鱼论坛">
+                        <small class="form-text text-muted">{:lang('You can modify the site name at any time in the background')}</small>
+                    </div><br>
+                    <h4>{:lang('Founder Information')}</h4><hr>
+                    <div class="form-group">
+                        <label>{:lang('The administrator account')}：</label>
+                        <input type="text" class="form-control" name="admin" value="admin" required="required">
+                        <small class="form-text text-muted">{:lang('It is recommended to change to another administrator account, do not use the default account')}</small>
+                    </div>
+                    <div class="form-group">
+                        <label>{:lang('The administrator password')}：</label>
+                        <input type="password" class="form-control" name="pwd" value="" required="required">
+                        <small class="form-text text-muted">{:lang('The administrator password can not be shorter than 8 characters')}</small>
+                    </div>
+                    <div class="form-group">
+                        <label>{:lang('Confirm password')}：</label>
+                        <input type="password" class="form-control" name="repwd" value="" required="required">
+                    </div>
+                    <div class="form-group">
+                        <label>{:lang('E-mail')}：</label>
+                        <input type="email" class="form-control" name="email" value="" required="required">
+                    </div>
+                    <div class="form-group text-center">
+                        <small class="form-text text-muted">{:lang('It takes about half a minute to create the data. Please click on the Create Data button and wait patiently')}</small>
+                    </div>
+                    <div class="text-center">
+                        <a href="step1" class="btn btn-info">{:lang('Previous')}</a>&nbsp;&nbsp;
+                        <button type="submit" id="myButton" class="btn btn-info">{:lang('Create the data')}</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    $(document).ready(function(){
+        window.addEventListener('pageshow', function () {
+            $("#myButton").prop('disabled',false);
+        });
+        $("form").submit(function(e){
+            $("#myButton").prop('disabled','disabled');
+        });
+    });
+</script>
+{include file="index/footer" /}

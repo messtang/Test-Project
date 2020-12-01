@@ -1,0 +1,13 @@
+<nav>
+    <ol class="breadcrumb my-0 bg-white py-1">
+        {volist name="daohang" id="vo"}
+        <li class="breadcrumb-item{if $vo.active == 1} active{/if}">
+            {if $vo.active == 1}
+            {$vo.icon} {$vo.label}
+            {else /}
+            <a href="{$vo.href}" class="text-info text-decoration-none">{$vo.icon} {$vo.label}</a>
+            {/if}
+        </li>
+        {/volist}
+    </ol>
+</nav>

@@ -1,0 +1,190 @@
+{include file="index/header" /}
+<form>
+    <div class="form-group">
+        <label>{:lang('Main post')}</label>
+        <select class="form-control" name="tiezi">
+            <option value="0"{if condition="$forum.tiezi eq 0"} selected{/if}>{:lang('Allow everyone to view')}</option>
+            <option value="1"{if condition="$forum.tiezi eq 1"} selected{/if}>{:lang('Only allow login to view')}</option>
+        </select>
+    </div>
+    <div class="form-group">
+        <label>{:lang('Annex')}</label>
+        <select class="form-control" name="fujian">
+            <option value="0"{if condition="$forum.fujian eq 0"} selected{/if}>{:lang('Allow regular users to send attachments')}</option>
+            <option value="5"{if condition="$forum.fujian eq 5"} selected{/if}>{:lang('Allow internship moderators and above to send attachments')}</option>
+            <option value="10"{if condition="$forum.fujian eq 10"} selected{/if}>{:lang('Allow sub-moderators and above to send attachments')}</option>
+            <option value="15"{if condition="$forum.fujian eq 15"} selected{/if}>{:lang('Allow moderators and above to send attachments')}</option>
+            <option value="20"{if condition="$forum.fujian eq 20"} selected{/if}>{:lang('Allow ordinary administrators and above to send attachments')}</option>
+            <option value="25"{if condition="$forum.fujian eq 25"} selected{/if}>{:lang('Allow advanced administrators and above to send attachments')}</option>
+            <option value="30"{if condition="$forum.fujian eq 30"} selected{/if}>{:lang('Only allow founders to send attachments')}</option>
+        </select>
+    </div>
+    <div class="form-group">
+        <label>{:lang('Minimum user level allowed to upload attachments')}</label>
+        <select class="form-control" name="fujiandj">
+            {volist name="dengji" id="vo"}
+            <option value="{$vo.jibie}"{if condition="$forum.fujiandj eq $vo.jibie"} selected{/if}>{$vo.djname}</option>
+            {/volist}
+        </select>
+        <small class="form-text text-muted">{:lang('This level setting is only valid when allowing ordinary users to send attachments')}</small>
+    </div>
+    <div class="form-group">
+        <label>{:lang('Download attachment')}</label>
+        <select class="form-control" name="fujiandwn">
+            <option value="0"{if condition="$forum.fujiandwn eq 0"} selected{/if}>{:lang('Allow everyone to download attachments')}</option>
+            <option value="5"{if condition="$forum.fujiandwn eq 5"} selected{/if}>{:lang('Only allow you to download attachments after login')}</option>
+            <option value="10"{if condition="$forum.fujiandwn eq 10"} selected{/if}>{:lang('Only allow responses to download attachments')}</option>
+        </select>
+    </div>
+    <div class="form-group">
+        <label>{:lang('Whether to allow uploading images when posting')}</label>
+        <select class="form-control" name="tupian">
+            <option value="0"{if condition="$forum.tupian eq 0"} selected{/if}>{:lang('Allow regular users to upload images')}</option>
+            <option value="5"{if condition="$forum.tupian eq 5"} selected{/if}>{:lang('Allow internship moderators and above to upload images')}</option>
+            <option value="10"{if condition="$forum.tupian eq 10"} selected{/if}>{:lang('Allow sub-moderators and above to upload images')}</option>
+            <option value="15"{if condition="$forum.tupian eq 15"} selected{/if}>{:lang('Allow moderators and above to upload images')}</option>
+            <option value="20"{if condition="$forum.tupian eq 20"} selected{/if}>{:lang('Allow normal administrators and above to upload images')}</option>
+            <option value="25"{if condition="$forum.tupian eq 25"} selected{/if}>{:lang('Allow advanced administrators and above to upload images')}</option>
+            <option value="30"{if condition="$forum.tupian eq 30"} selected{/if}>{:lang('Only allow the founder to upload images')}</option>
+        </select>
+    </div>
+    <div class="form-group">
+        <label>{:lang('Minimum user level allowed to upload images')}</label>
+        <select class="form-control" name="tupiandj">
+            {volist name="dengji" id="vo"}
+            <option value="{$vo.jibie}"{if condition="$forum.tupiandj eq $vo.jibie"} selected{/if}>{$vo.djname}</option>
+            {/volist}
+        </select>
+        <small class="form-text text-muted">{:lang('This level setting is only valid when allowing normal users to upload images')}</small>
+    </div>
+    <div class="form-group">
+        <label>{:lang('Whether to allow links when posting')}</label>
+        <select class="form-control" name="lianjie">
+            <option value="0"{if condition="$forum.lianjie eq 0"} selected{/if}>{:lang('Allow ordinary users to send links')}</option>
+            <option value="5"{if condition="$forum.lianjie eq 5"} selected{/if}>{:lang('Allow internship moderators and above to send links')}</option>
+            <option value="10"{if condition="$forum.lianjie eq 10"} selected{/if}>{:lang('Allow sub-moderators and above to send links')}</option>
+            <option value="15"{if condition="$forum.lianjie eq 15"} selected{/if}>{:lang('Allow moderators and above to send links')}</option>
+            <option value="20"{if condition="$forum.lianjie eq 20"} selected{/if}>{:lang('Allow ordinary administrators and above to send links')}</option>
+            <option value="25"{if condition="$forum.lianjie eq 25"} selected{/if}>{:lang('Allow advanced administrators and above to send links')}</option>
+            <option value="30"{if condition="$forum.lianjie eq 30"} selected{/if}>{:lang('Only allow the founder to send links')}</option>
+        </select>
+    </div>
+    <div class="form-group">
+        <label>{:lang('Minimum user level allowed to send links')}</label>
+        <select class="form-control" name="lianjiedj">
+            {volist name="dengji" id="vo"}
+            <option value="{$vo.jibie}"{if condition="$forum.lianjiedj eq $vo.jibie"} selected{/if}>{$vo.djname}</option>
+            {/volist}
+        </select>
+        <small class="form-text text-muted">{:lang('This level setting is only valid when allowing normal users to send links')}</small>
+    </div>
+    <div class="form-group">
+        <label>{:lang('Integral')}</label>
+        <select class="form-control" name="jifen">
+            <option value="0"{if condition="$forum.jifen eq 0"} selected{/if}>{:lang('Allow ordinary users to set integral value')}</option>
+            <option value="5"{if condition="$forum.jifen eq 5"} selected{/if}>{:lang('Allow internship moderators and above to set integral value')}</option>
+            <option value="10"{if condition="$forum.jifen eq 10"} selected{/if}>{:lang('Allow sub-moderators and above to set integral value')}</option>
+            <option value="15"{if condition="$forum.jifen eq 15"} selected{/if}>{:lang('Allow moderators and above to set integral value')}</option>
+            <option value="20"{if condition="$forum.jifen eq 20"} selected{/if}>{:lang('Allow ordinary administrators and above to set integral value')}</option>
+            <option value="25"{if condition="$forum.jifen eq 25"} selected{/if}>{:lang('Allow advanced administrators and above to set integral value')}</option>
+            <option value="30"{if condition="$forum.jifen eq 30"} selected{/if}>{:lang('Only allow founders to set integral value')}</option>
+        </select>
+    </div>
+    <div class="form-group">
+        <label>{:lang('Minimum user level allowed to set integral value')}</label>
+        <select class="form-control" name="jifendj">
+            {volist name="dengji" id="vo"}
+            <option value="{$vo.jibie}"{if condition="$forum.jifendj eq $vo.jibie"} selected{/if}>{$vo.djname}</option>
+            {/volist}
+        </select>
+        <small class="form-text text-muted">{:lang('This level setting is only valid when allowing ordinary users to set integral value')}</small>
+    </div>
+    <div class="form-group">
+        <label>{:lang('New users need to verify the code before sending the first few posts')}</label>
+        <input type="number" class="form-control" name="yanzhengzt" value="{$forum.yanzhengzt}">
+    </div>
+    <div class="form-group">
+        <label>{:lang('New users need to verify the code before sending the first few reply posts')}</label>
+        <input type="number" class="form-control" name="yanzhenggt" value="{$forum.yanzhenggt}">
+    </div>
+    <div class="form-group">
+        <label>{:lang('How long does it take for users to post after they register?')}</label>
+        <select class="form-control" name="shichangzt">
+            <option value="Immediately"{if condition="$forum.shichangzt eq 'Immediately'"} selected{/if}>{:lang('Immediately')}</option>
+            <option value="10 minutes"{if condition="$forum.shichangzt eq '10 minutes'"} selected{/if}>{:lang('10 minutes')}</option>
+            <option value="20 minutes"{if condition="$forum.shichangzt eq '20 minutes'"} selected{/if}>{:lang('20 minutes')}</option>
+            <option value="40 minutes"{if condition="$forum.shichangzt eq '40 minutes'"} selected{/if}>{:lang('40 minutes')}</option>
+            <option value="1 hour"{if condition="$forum.shichangzt eq '1 hour'"} selected{/if}>{:lang('1 hour')}</option>
+            <option value="2 hours"{if condition="$forum.shichangzt eq '2 hours'"} selected{/if}>{:lang('2 hours')}</option>
+            <option value="3 hours"{if condition="$forum.shichangzt eq '3 hours'"} selected{/if}>{:lang('3 hours')}</option>
+            <option value="5 hours"{if condition="$forum.shichangzt eq '5 hours'"} selected{/if}>{:lang('5 hours')}</option>
+            <option value="10 hours"{if condition="$forum.shichangzt eq '10 hours'"} selected{/if}>{:lang('10 hours')}</option>
+            <option value="20 hours"{if condition="$forum.shichangzt eq '20 hours'"} selected{/if}>{:lang('20 hours')}</option>
+            <option value="1 day"{if condition="$forum.shichangzt eq '1 day'"} selected{/if}>{:lang('1 day')}</option>
+            <option value="2 days"{if condition="$forum.shichangzt eq '2 days'"} selected{/if}>{:lang('2 days')}</option>
+            <option value="3 days"{if condition="$forum.shichangzt eq '3 days'"} selected{/if}>{:lang('3 days')}</option>
+            <option value="4 days"{if condition="$forum.shichangzt eq '4 days'"} selected{/if}>{:lang('4 days')}</option>
+            <option value="5 days"{if condition="$forum.shichangzt eq '5 days'"} selected{/if}>{:lang('5 days')}</option>
+            <option value="6 days"{if condition="$forum.shichangzt eq '6 days'"} selected{/if}>{:lang('6 days')}</option>
+            <option value="7 days"{if condition="$forum.shichangzt eq '7 days'"} selected{/if}>{:lang('7 days')}</option>
+        </select>
+    </div>
+    <div class="form-group">
+        <label>{:lang('How long does it take for users to reply to posts after they register?')}</label>
+        <select class="form-control" name="shichanggt">
+            <option value="Immediately"{if condition="$forum.shichangzt eq 'Immediately'"} selected{/if}>{:lang('Immediately')}</option>
+            <option value="10 minutes"{if condition="$forum.shichangzt eq '10 minutes'"} selected{/if}>{:lang('10 minutes')}</option>
+            <option value="20 minutes"{if condition="$forum.shichangzt eq '20 minutes'"} selected{/if}>{:lang('20 minutes')}</option>
+            <option value="40 minutes"{if condition="$forum.shichangzt eq '40 minutes'"} selected{/if}>{:lang('40 minutes')}</option>
+            <option value="1 hour"{if condition="$forum.shichangzt eq '1 hour'"} selected{/if}>{:lang('1 hour')}</option>
+            <option value="2 hours"{if condition="$forum.shichangzt eq '2 hours'"} selected{/if}>{:lang('2 hours')}</option>
+            <option value="3 hours"{if condition="$forum.shichangzt eq '3 hours'"} selected{/if}>{:lang('3 hours')}</option>
+            <option value="5 hours"{if condition="$forum.shichangzt eq '5 hours'"} selected{/if}>{:lang('5 hours')}</option>
+            <option value="10 hours"{if condition="$forum.shichangzt eq '10 hours'"} selected{/if}>{:lang('10 hours')}</option>
+            <option value="20 hours"{if condition="$forum.shichangzt eq '20 hours'"} selected{/if}>{:lang('20 hours')}</option>
+            <option value="1 day"{if condition="$forum.shichangzt eq '1 day'"} selected{/if}>{:lang('1 day')}</option>
+            <option value="2 days"{if condition="$forum.shichangzt eq '2 days'"} selected{/if}>{:lang('2 days')}</option>
+            <option value="3 days"{if condition="$forum.shichangzt eq '3 days'"} selected{/if}>{:lang('3 days')}</option>
+            <option value="4 days"{if condition="$forum.shichangzt eq '4 days'"} selected{/if}>{:lang('4 days')}</option>
+            <option value="5 days"{if condition="$forum.shichangzt eq '5 days'"} selected{/if}>{:lang('5 days')}</option>
+            <option value="6 days"{if condition="$forum.shichangzt eq '6 days'"} selected{/if}>{:lang('6 days')}</option>
+            <option value="7 days"{if condition="$forum.shichangzt eq '7 days'"} selected{/if}>{:lang('7 days')}</option>
+        </select>
+    </div>
+    <div class="form-group">
+        <label>{:lang('Whether posting requires pre-review')}</label>
+        <select class="form-control" name="preaudit">
+            <option value="0"{if condition="$forum.preaudit eq 0"} selected{/if}>{:lang('No pre-audit required')}</option>
+            <option value="1"{if condition="$forum.preaudit eq 1"} selected{/if}>{:lang('Pre-review required')}</option>
+        </select>
+    </div>
+    <div class="form-group">
+        <label>{:lang('Does follow-up post require pre-review')}</label>
+        <select class="form-control" name="fpreaudit">
+            <option value="0"{if condition="$forum.fpreaudit eq 0"} selected{/if}>{:lang('No pre-audit required')}</option>
+            <option value="1"{if condition="$forum.fpreaudit eq 1"} selected{/if}>{:lang('Pre-review required')}</option>
+        </select>
+    </div>
+    {if condition="$extend eq 1"}
+    <div class="form-group">
+        <label>{:lang('Extension type name')}</label>
+        <input type="text" class="form-control" name="kzleixing" value="{$forum.kzleixing}">
+        <small class="form-text text-muted">{:lang('You can extend a post type')}</small>
+    </div>
+    {/if}
+    <div class="form-group">
+        <label>{:lang('Allow extensions to upload attachments')}</label>
+        <textarea class="form-control" rows="5" name="geshi">{$forum.geshi}</textarea>
+        <small class="form-text text-muted">{:lang('The extensions are separated by commas')}</small>
+    </div>
+    <div class="form-group">
+        <label>{:lang('Sensitive word')}</label>
+        <textarea class="form-control" rows="12" name="mingan">{$forum.mingan}</textarea>
+        <small class="form-text text-muted">{:lang('Posting content with the above words will not allow posting, sensitive words separated by line breaks')}</small>
+    </div>
+    <div class="text-center mb-5">
+        <input type="hidden" name="verification" value="{$verification}">
+        <button type="button" id="formsubmit" class="btn btn-info submit">{:lang('Submit')}<i class="fa fa-refresh fa-spin ml-2 d-none"></i></button>
+    </div>
+</form>
+{include file="index/footer" /}

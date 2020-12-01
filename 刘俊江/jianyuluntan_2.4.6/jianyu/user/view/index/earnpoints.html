@@ -1,0 +1,28 @@
+{include file="index/header" /}
+<p class="text-secondary">{:lang('You can earn points in the following ways')}</p>
+<table class="table">
+    <thead>
+    <tr>
+        <th scope="col">{:lang('Ways to earn points')}</th>
+        <th scope="col">{:lang('Integral')}</th>
+    </tr>
+    </thead>
+    <tbody id="chengzhangtr">
+    {volist name="growth" id="vo"}
+    <tr>
+        <td>{$vo.czname}</td>
+        <td>{$vo.jifen}</td>
+    </tr>
+    {/volist}
+    </tbody>
+</table>
+<div class="mb-5">
+    <p><a href="{:Url('user/Index/myscores')}" class="text-info">{:lang('See how many points I have')}</a></p>
+    <p>{:lang('Other ways to earn points')}: </p>
+    <p class="text-secondary">1. {:lang('Contact the administrator')}</p>
+    <p class="text-secondary">2. <a href="{:Url('user/Index/checkin')}" class="text-info">{:lang('Check in')}</a></p>
+    {if condition="$openpay == 1"}
+    <p class="text-secondary">3. <a href="{:Url('pay/Index/index')}?type=jifen" target="_blank" class="text-info">{:lang('Buy online')}</a> ( {:lang('One yuan redeemable points: ')}{$jifenduihuan} )</p>
+    {/if}
+</div>
+{include file="index/footer" /}

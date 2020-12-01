@@ -1,0 +1,77 @@
+<div class="container-fluid pb-2 px-5">
+    <div class="row">
+        <div class="col">
+            {volist name="youlian" id="vo"}
+            <a href="{$vo.dizhi}" class="m-1 text-muted" target="{$vo.target}">{if $vo.tubiao == ''}{$vo.mingcheng}{else /}<img src="{$vo.tubiao}" height="20">{/if}</a>
+            {/volist}
+        </div>
+    </div>
+</div>
+<div class="p-3 bg-light text-muted">
+    <div class="text-center">
+        <small>{$copyright}</small>
+    </div>
+    <div class="text-center">
+        <small>{$zhichi}</small>
+    </div>
+    <div class="text-center">
+        {$record}
+    </div>
+    <div class="text-center">
+        {$statistics}
+    </div>
+</div>
+<div class="d-none" id="feedbackurl">{$url.feedback}</div>
+<div class="d-none" id="qiandaourl">{$url.qiandao}</div>
+<div class="d-none" id="qudenglu">{$url.denglu}</div>
+<div class="d-none" id="isLogin">{$isLogin}</div>
+{if $isLogin != 1}
+<div class="d-none" id="dengluurl">{$url.adenglu}</div>
+<div class="modal fade" id="jianyudenglu" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">请先登录<small>&nbsp;[&nbsp;没有账户，请先<a href="{$url.zhuce}" class="text-info text-decoration-none">注册</a>&nbsp;]</small></h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form id="dengluform">
+                    <div class="form-group">
+                        <label>用户名</label>
+                        <input type="text" class="form-control" name="user" placeholder="用户名" autofocus>
+                    </div>
+                    <div class="form-group">
+                        <label>密码</label>
+                        <input type="password" class="form-control" name="pwd" placeholder="密码">
+                    </div>
+                    {eq name="captcha" value="1"}
+                    <div class="form-group">
+                        <label>验证码</label>
+                        <div><img class="img-fluid" style="cursor: pointer;" src="" id="captcha" alt="captcha" />&nbsp;<a href="#!" id="resetcaptcha" class="text-info text-decoration-none">看不清</a></div>
+                        <input type="text" class="form-control" name="captcha" placeholder="验证码">
+                        <input type="hidden" id="captcha_src" value="{:captcha_src()}">
+                    </div>
+                    {/eq}
+                    <div class="checkbox">
+                        <label>
+                            <input type="checkbox" name="remember"> 记住我
+                        </label>
+                    </div>
+                    <div class="text-center">
+                        <button type="button" id="denglu" class="btn btn-info">登录<i class="fa fa-refresh fa-spin ml-2 d-none"></i></button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{/if}
+<div>{$jianyuluntan}</div>
+<script src="{$domain}public/common/js/popper.min.js"></script>
+<script src="{$domain}public/common/js/bootstrap.min.js"></script>
+<script src="{$domain}public/common/confirm/jquery-confirm.js"></script>
+<script src="{$domain}public/theme/{$template}/js/jianyu.js"></script>
+</body>
+</html>

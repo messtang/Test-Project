@@ -1,0 +1,103 @@
+{include file="public/theme/default/header.html" /}
+{include file="public/theme/default/daohang.html" /}
+<div class="container">
+    <div class="row">
+        <div class="col-md-9">
+            <div class="clearfix mb-1">
+                <div class="btn-group float-right">
+                    <a class="btn btn-light btn-sm text-black-50 py-0" data-toggle="dropdown" href="#" role="button"><i class="fa fa-sort"></i></a>
+                    <div class="dropdown-menu dropdown-menu-right border-0 shadow">
+                        <a class="dropdown-item text-muted" href="{$url.default}">默认顺序</a>
+                        <a class="dropdown-item text-muted" href="{$url.reply}">最新回复</a>
+                        <a class="dropdown-item text-muted" href="{$url.release}">最新发布</a>
+                    </div>
+                </div>
+            </div>
+            {notempty name="jianyu.zhiding"}
+            {volist name="jianyu.zhiding" id="vo"}
+            <div class="card shadow mb-4 border-0">
+                <div class="card-body">
+                    <img src="{$vo.touxiang}" height="50" class="rounded-circle float-left mr-3" data-toggle="popover" data-placement="right">
+                    <h5>
+                        {if condition="$vo.tuijian eq 1"}<i class="fa fa-thumbs-up text-danger"></i>&nbsp;{/if}{if condition="$vo.jingpin eq 1"}<i class="fa fa-star text-warning"></i>&nbsp;{/if}
+                        <button type="button" class="btn btn-warning btn-sm py-0">置顶</button>
+                        <a href="{$vo.fenleihref}" class="btn btn-info btn-sm py-0">{$vo.fenlei}</a>
+                        <a href="{$vo.leixinghref}" class="btn btn-info btn-sm py-0">{$vo.leixing}</a>
+                        <a href="{$vo.href}" class="text-info text-decoration-none">{$vo.biaoti}</a>{if condition="$vo.daifujian eq 1"}&nbsp;<i class="fa fa-paperclip text-success"></i>{/if}
+                    </h5>
+                    <small class="text-black-50">
+                        <i class="fa fa-user"></i>&nbsp;{$vo.nicheng}&nbsp;发表于&nbsp;{$vo.fabushijian.nian}年{$vo.fabushijian.yue}月{$vo.fabushijian.ri}日
+                        <span class="d-none d-md-inline">
+                            {notempty name="vo.shicha.zuijinpinglun"}
+                            &nbsp;&nbsp;<i class="fa fa-user-o"></i>&nbsp;
+                            {$vo.gentieren}&nbsp;回复于&nbsp;{$vo.shicha.zuijinpinglun}
+                            {/notempty}
+                            {notempty name="vo.zuijinfangwen"}
+                            &nbsp;&nbsp;<i class="fa fa-eye"></i>&nbsp;最后浏览于&nbsp;{$vo.shicha.zuijinfangwen}
+                            {/notempty}
+                        </span>
+                        <div class="float-right text-black-50">
+                            <i class="fa fa-commenting-o"></i>&nbsp;{$vo.gentieliang}
+                        </div>
+                    </small>
+                    <div class="d-none">
+                        <div class="text-muted px-4 text-nowrap">
+                            <img src="{$vo.touxiang}" height="50" class="rounded-circle float-left mr-3">
+                            <h6>{$vo.nicheng}</h6>
+                            <h6>LV&nbsp;{$vo.dengji}&nbsp;<span class="text-info">[{$vo.dengjiming}]</span></h6>
+                            <h6>最后在线：{$vo.shicha.zuijinzaixian}</h6>
+                            <h6>加入时间：{$vo.shicha.jiaru}</h6>
+                            <h6>主帖：{$vo.uzhutie}&nbsp;&nbsp;跟帖：{$vo.ugentie}</h6>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {/volist}
+            {/notempty}
+            {volist name="jianyu.tie" id="vo"}
+            <div class="card shadow mb-4 border-0">
+                <div class="card-body">
+                    <img src="{$vo.touxiang}" height="50" class="rounded-circle float-left mr-3" data-toggle="popover" data-placement="right">
+                    <h6>
+                        <span class="text-info">{if condition="$vo.tuijian eq 1"}<i class="fa fa-thumbs-o-up text-danger"></i>&nbsp;{/if}{if condition="$vo.jingpin eq 1"}<i class="fa fa-star-o text-warning"></i>&nbsp;{/if}[&nbsp;<a class="text-info text-decoration-none" href="{$vo.fenleihref}">{$vo.fenlei}</a>&nbsp;]</span>&nbsp;<span class="text-info">[&nbsp;<a class="text-info text-decoration-none" href="{$vo.leixinghref}">{$vo.leixing}</a>&nbsp;]</span>&nbsp;<a href="{$vo.href}" class="text-secondary text-decoration-none">{$vo.biaoti}</a>{if condition="$vo.daifujian eq 1"}&nbsp;<i class="fa fa-paperclip text-success"></i>{/if}
+                    </h6>
+                    <small class="text-black-50">
+                        <i class="fa fa-user"></i>&nbsp;{$vo.nicheng}&nbsp;发表于&nbsp;{$vo.fabushijian.nian}年{$vo.fabushijian.yue}月{$vo.fabushijian.ri}日
+                        <span class="d-none d-md-inline">
+                            {notempty name="vo.shicha.zuijinpinglun"}
+                            &nbsp;&nbsp;<i class="fa fa-user-o"></i>&nbsp;
+                            {$vo.gentieren}&nbsp;回复于&nbsp;{$vo.shicha.zuijinpinglun}
+                            {/notempty}
+                            {notempty name="vo.zuijinfangwen"}
+                            &nbsp;&nbsp;<i class="fa fa-eye"></i>&nbsp;最后浏览于&nbsp;{$vo.shicha.zuijinfangwen}
+                            {/notempty}
+                        </span>
+                        <div class="float-right text-black-50">
+                            <i class="fa fa-commenting-o"></i>&nbsp;{$vo.gentieliang}
+                        </div>
+                    </small>
+                    <div class="d-none">
+                        <div class="text-muted px-4 text-nowrap">
+                            <img src="{$vo.touxiang}" height="50" class="rounded-circle float-left mr-3">
+                            <h6>{$vo.nicheng}</h6>
+                            <h6>LV&nbsp;{$vo.dengji}&nbsp;<span class="text-info">[{$vo.dengjiming}]</span></h6>
+                            <h6>最后在线：{$vo.shicha.zuijinzaixian}</h6>
+                            <h6>加入时间：{$vo.shicha.jiaru}</h6>
+                            <h6>主帖：{$vo.uzhutie}&nbsp;&nbsp;跟帖：{$vo.ugentie}</h6>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {/volist}
+            <nav>
+                <ul class="pagination justify-content-center my-4">
+                    {$jianyu.pages}
+                </ul>
+            </nav>
+        </div>
+        <div class="col-md-3">
+            {include file="public/theme/default/side.html" /}
+        </div>
+    </div>
+</div>
+{include file="public/theme/default/footer.html" /}

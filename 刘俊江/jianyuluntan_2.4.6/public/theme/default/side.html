@@ -1,0 +1,51 @@
+<div class="container-fluid">
+    <div class="row bg-info rounded">
+        <div class="col-md-6 px-0">
+            <button id="qiandao" type="button" class="btn btn-info btn-block btn-sm shadow">
+                <span id="qiandaomiaoshu">{if condition="$qiandao == 1"}已签到{else /}签到{/if}</span>
+                <div id="qiandaozhong" class="spinner-border spinner-border-sm d-none">
+                    <span class="sr-only">Loading...</span>
+                </div>
+            </button>
+        </div>
+        <div class="col-md-6 px-0">
+            <a class="btn btn-info btn-block btn-sm shadow" href="{$url.fatie}">发新帖</a>
+        </div>
+    </div>
+</div>
+<div>
+    <div class="card mt-3 border-0 shadow">
+        <div class="card-body">
+            <div class="row text-center text-muted">
+                <div class="col-4 col-md-6">
+                    论坛主帖<br>{$tongji.zhutie}
+                </div>
+                <div class="col-4 col-md-6">
+                    论坛跟帖<br>{$tongji.gentie}
+                </div>
+                <div class="col-4 col-md-6">
+                    在线访客<br>{$tongji.zaixian}
+                </div>
+                <div class="col-4 col-md-6">
+                    今日主帖<br>{$tongji.jintian.zhutie}
+                </div>
+                <div class="col-4 col-md-6">
+                    今日跟帖<br>{$tongji.jintian.gentie}
+                </div>
+                <div class="col-4 col-md-6">
+                    今日注册<br>{$tongji.jintian.zhuce}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div>
+    <form method="get" action="{$url.sousuo}">
+        <div class="input-group mt-3 shadow">
+            <input type="text" name="find" class="form-control border-0" placeholder="关键字">
+            <div class="input-group-append">
+                <button class="btn btn-outline-info border-0" type="submit">搜索</button>
+            </div>
+        </div>
+    </form>
+</div>

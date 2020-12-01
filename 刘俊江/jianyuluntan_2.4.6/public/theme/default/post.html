@@ -1,0 +1,192 @@
+{include file="public/theme/default/header.html" /}
+{include file="public/theme/default/daohang.html" /}
+<div class="container">
+    <div class="row">
+        <div class="col-md-9">
+            {notempty name="jianyu.zhutie"}
+            <div class="card shadow my-3 border-0">
+                <div class="card-header bg-white">
+                    <img src="{$jianyu.zhutie.touxiang}" height="65" class="rounded-circle float-right mr-3" data-toggle="popover" data-placement="left">
+                    <h4>{$jianyu.zhutie.biaoti}{if condition="$jianyu.zhutie.daifujian eq 1"}&nbsp;<i class="fa fa-paperclip text-success"></i>{/if}</h4>
+                    <small class="text-black-50">
+                        <i class="fa fa-user"></i>&nbsp;{$jianyu.zhutie.nicheng}&nbsp;发表于&nbsp;{$jianyu.zhutie.fabushijian.nian}年{$jianyu.zhutie.fabushijian.yue}月{$jianyu.zhutie.fabushijian.ri}日
+                        <a href="{$jianyu.zhutie.fenleihref}" class="text-info text-decoration-none mx-2">{$jianyu.zhutie.fenlei}</a>
+                        <i class="fa fa-eye"></i>&nbsp;{$jianyu.zhutie.yuedu}
+                        {notempty name="jianyu.zhutie.xiugai"}
+                        <a href="{$jianyu.zhutie.xiugai}" class="text-info text-decoration-none mx-2" title="修改帖子"><i class="fa fa-pencil-square-o"></i></a>
+                        {/notempty}
+                    </small>
+                    <div class="d-none">
+                        <div class="text-muted px-4 text-nowrap">
+                            <img src="{$jianyu.zhutie.touxiang}" height="50" class="rounded-circle float-left mr-3">
+                            <h6>{$jianyu.zhutie.nicheng}</h6>
+                            <h6>LV&nbsp;{$jianyu.zhutie.dengji}&nbsp;<span class="text-info">[{$jianyu.zhutie.dengjiming}]</span></h6>
+                            <h6>最后在线：{$jianyu.zhutie.shicha.zuijinzaixian}</h6>
+                            <h6>加入时间：{$jianyu.zhutie.shicha.jiaru}</h6>
+                            <h6>主帖：{$jianyu.zhutie.uzhutie}&nbsp;&nbsp;跟帖：{$jianyu.zhutie.ugentie}</h6>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-body">
+                    {if condition="$jianyu.gentie.dangqianye > 1"}
+                    <a href="#" class="btn btn-light" id="chakanquanwen">点击查看全文</a>
+                    {/if}
+                    <div{if condition="$jianyu.gentie.dangqianye > 1"} class="d-none"{/if}>
+                        <div class="zhengwen">
+                            {$jianyu.zhutie.zhengwen}
+                        </div>
+                        {if condition="$jianyu.zhutie.daifujian == 1"}
+                        <div class="mt-3">
+                            <i class="fa fa-paperclip text-success"></i>&nbsp;附件&nbsp;[{$jianyu.zhutie.daxiao}]：<br>
+                            {$jianyu.zhutie.fujianurl}
+                        </div>
+                        {/if}
+                        <div class="text-center my-2">
+                            <button type="button" class="btn btn-info mr-1 denglu" data-container="body" data-toggle="popover" data-placement="top" data-trigger="hover" data-content="赞一个" id="postzan"><i class="fa fa-thumbs-o-up"></i>&nbsp;<span>{$jianyu.zhutie.zan}</span></button>
+                            <button type="button" class="btn btn-secondary mr-1 denglu" data-container="body" data-toggle="popover" data-placement="top" data-trigger="hover" data-content="踩一下" id="postcai"><i class="fa fa-thumbs-o-down"></i>&nbsp;<span>{$jianyu.zhutie.cai}</span></button>
+                            <button type="button" class="btn btn-success denglu" data-container="body" data-toggle="popover" data-placement="top" data-trigger="hover" data-content="收藏" id="postshoucang"><i class="fa fa-star-o"></i>&nbsp;<span>{$jianyu.zhutie.shoucang}</span></button>
+                        </div>
+                    </div>
+                </div>
+                <ul class="list-group list-group-flush" id="huifulist">
+                    <li class="list-group-item text-black-50">
+                        <span id="huifutiaoshu">{$jianyu.gentie.zongliang}</span>条回复&nbsp;{$jianyu.zhutie.yuedu}次浏览
+                        <div class="btn-group float-right">
+                            <a class="btn btn-light btn-sm text-black-50" data-toggle="dropdown" href="#" role="button"><i class="fa fa-sort"></i></a>
+                            <div class="dropdown-menu dropdown-menu-right border-0 shadow">
+                                <a class="dropdown-item text-muted" href="{$url.release}">按跟帖顺序</a>
+                                <a class="dropdown-item text-muted" href="{$url.latest}">按最新跟帖</a>
+                            </div>
+                        </div>
+                    </li>
+                    {volist name="jianyu.gentie.tie" id="vo"}
+                    <li class="list-group-item border-light">
+                        <img src="{$vo.touxiang}" height="50" class="rounded-circle float-left mr-3" data-toggle="popover" data-placement="right">
+                        <div class="float-right text-black-50">
+                            {if condition="$myid == $vo.uid"}
+                            <a href="#!" class="mr-2 text-black-50 text-decoration-none jianyu_xiugaigentie" data-id="{$vo.id}"><i class="fa fa-pencil-square-o"></i>&nbsp;修改</a>
+                            <a href="#!" class="mr-2 text-black-50 text-decoration-none jianyu_shanchugentie" data-id="{$vo.id}"><i class="fa fa-trash-o"></i>&nbsp;删除<i class="fa fa-refresh fa-spin ml-2 d-none"></i></a>
+                            {/if}
+                            <span>{$vo.lou}楼</span>
+                        </div>
+                        <small class="text-black-50">
+                            <i class="fa fa-user"></i>&nbsp;{$vo.nicheng}&nbsp;发表于&nbsp;{$vo.shicha.gentieshijian}
+                        </small>
+                        {notempty name="vo.beihuifu"}
+                        <div class="bg-light p-2 my-2 media">
+                            <img src="{$vo.beihuifu.touxiang}" height="30" class="rounded-circle float-left mr-3" data-toggle="popover" data-placement="right">
+                            <div class="media-body">
+                                <small class="text-black-50">
+                                    <i class="fa fa-user"></i>&nbsp;{$vo.beihuifu.nicheng}&nbsp;发表于&nbsp;{$vo.beihuifu.shicha.gentieshijian}
+                                </small>
+                                <h6 class="text-muted gentieneirong zhengwen">
+                                    {$vo.beihuifu.neirong}
+                                </h6>
+                            </div>
+                            <div class="d-none">
+                                <div class="text-muted px-4 text-nowrap">
+                                    <img src="{$vo.beihuifu.touxiang}" height="50" class="rounded-circle float-left mr-3">
+                                    <h6>{$vo.beihuifu.nicheng}</h6>
+                                    <h6>LV&nbsp;{$vo.beihuifu.dengji}&nbsp;<span class="text-info">[{$vo.beihuifu.dengjiming}]</span></h6>
+                                    <h6>最后在线：{$vo.beihuifu.shicha.zuijinzaixian}</h6>
+                                    <h6>加入时间：{$vo.beihuifu.shicha.jiaru}</h6>
+                                    <h6>主帖：{$vo.beihuifu.uzhutie}&nbsp;&nbsp;跟帖：{$vo.beihuifu.ugentie}</h6>
+                                </div>
+                            </div>
+                        </div>
+                        {/notempty}
+                        <h6 class="gentieneirong zhengwen">
+                            {$vo.neirong}
+                        </h6>
+                        {if $isLogin == 1}
+                        <div class="float-right text-black-50">
+                            <button type="button" class="btn btn-light btn-sm jianyu_huifu" data-id="{$vo.id}"><i class="fa fa-pencil-square-o"></i>&nbsp;回复</button>
+                        </div>
+                        {/if}
+                        <div class="mt-3">
+                            <button type="button" class="btn btn-info btn-sm mr-1 denglu jianyu_gentiezan" data-container="body" data-toggle="popover" data-placement="top" data-trigger="hover" data-content="赞一个" data-id="{$vo.id}"><i class="fa fa-thumbs-o-up"></i>&nbsp;<span>{$vo.zan}</span></button><button type="button" class="btn btn-secondary btn-sm denglu jianyu_gentiecai" data-container="body" data-toggle="popover" data-placement="top" data-trigger="hover" data-content="踩一下" data-id="{$vo.id}"><i class="fa fa-thumbs-o-down"></i>&nbsp;<span>{$vo.cai}</span></button>
+                        </div>
+                        <div class="huifudiv my-2">
+                            <div class="huifudivtop"></div>
+                        </div>
+                        <div class="d-none">
+                            <div class="text-muted px-4 text-nowrap">
+                                <img src="{$vo.touxiang}" height="50" class="rounded-circle float-left mr-3">
+                                <h6>{$vo.nicheng}</h6>
+                                <h6>LV&nbsp;{$vo.dengji}&nbsp;<span class="text-info">[{$vo.dengjiming}]</span></h6>
+                                <h6>最后在线：{$vo.shicha.zuijinzaixian}</h6>
+                                <h6>加入时间：{$vo.shicha.jiaru}</h6>
+                                <h6>主帖：{$vo.uzhutie}&nbsp;&nbsp;跟帖：{$vo.ugentie}</h6>
+                            </div>
+                        </div>
+                    </li>
+                    {/volist}
+                    <li class="list-group-item border-light d-none" id="gentiefenge"></li>
+                    {notempty name="jianyu.gentie.pages"}
+                    <li class="list-group-item border-light">
+                        <nav>
+                            <ul class="pagination justify-content-center">
+                                {$jianyu.gentie.pages}
+                            </ul>
+                        </nav>
+                    </li>
+                    {/notempty}
+                </ul>
+                {if $isLogin == 1}
+                <div class="card-body">
+                    <div id="gentiedivprev"></div>
+                    <div id="gentiediv">
+                        <textarea class="form-control d-none" rows="3" id="pinglun" name="pinglun" data-tupian="{$jianyu.quanxian.tupian}" data-lianjie="{$jianyu.quanxian.lianjie}"></textarea>
+                        <small class="form-text text-muted" id="gentietishi">请在上面输入跟帖内容</small>
+                        {if condition="$needvcode eq 1"}
+                        <div class="form-group mt-2" id="captchadiv">
+                            <div><img class="img-fluid" style="cursor: pointer;" src="{:captcha_src()}" id="captcha" alt="captcha" />&nbsp;<a href="#!" id="resetcaptcha" class="text-info text-decoration-none">看不清</a></div>
+                            <input type="text" class="form-control" name="captcha" id="captchain" placeholder="验证码" autocomplete="off">
+                        </div>
+                        {/if}
+                        <div class="text-center my-3" id="gentiebtn">
+                            <button type="button" id="gentie" class="btn btn-info">跟帖<i class="fa fa-refresh fa-spin ml-2 d-none"></i></button>
+                        </div>
+                        <div class="text-center my-1 d-none" id="huifubtn">
+                            <button type="button" id="huifu" class="btn btn-light btn-sm">回复<i class="fa fa-refresh fa-spin ml-2 d-none"></i></button>
+                            <button type="button" id="xiugai" class="btn btn-light btn-sm d-none">修改<i class="fa fa-refresh fa-spin ml-2 d-none"></i></button>
+                            <button type="button" id="quxiaohuifu" class="btn btn-light btn-sm">取消</button>
+                        </div>
+                    </div>
+                </div>
+                {else /}
+                <div class="card-body text-center">
+                    <a class="btn btn-light denglu" href="#!">登录后可回复</a>
+                </div>
+                {/if}
+            </div>
+            {else /}
+            <div class="card shadow my-3 border-0">
+                <div class="card-body text-muted">
+                    <i class="fa fa-truck"></i>&nbsp;您访问的内容已经搬家了
+                </div>
+            </div>
+            {/notempty}
+        </div>
+        <div class="col-md-3">
+            {include file="public/theme/default/side.html" /}
+        </div>
+    </div>
+</div>
+<div class="d-none" id="postid">{$jianyu.zhutie.id}</div>
+<div class="d-none" id="gentieurl">{$url.gentie}</div>
+<div class="d-none" id="postzanurl">{$url.postzan}</div>
+<div class="d-none" id="postcaiurl">{$url.postcai}</div>
+<div class="d-none" id="postshoucangurl">{$url.postshoucang}</div>
+<div class="d-none" id="gentiezanurl">{$url.gentiezan}</div>
+<div class="d-none" id="gentiecaiurl">{$url.gentiecai}</div>
+<div class="d-none" id="huifuurl">{$url.huifu}</div>
+<div class="d-none" id="xiugaiurl">{$url.xiugai}</div>
+<div class="d-none" id="shanchugentieurl">{$url.shanchugentie}</div>
+<div class="d-none" id="zuidalou">{$jianyu.gentie.zuidalou}</div>
+<div class="d-none" id="subcname">{$jianyu.gentie.subcname}</div>
+<div class="d-none" id="feedback">{$feedback}</div>
+<script type="text/javascript" src="{$domain}public/common/HandyEditor/HandyEditor.min.js"></script>
+<script src="{$domain}public/theme/{$template}/js/gethtml.js"></script>
+<script src="{$domain}public/theme/{$template}/js/post.js"></script>
+{include file="public/theme/default/footer.html" /}

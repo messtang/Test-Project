@@ -1,0 +1,17 @@
+{include file="index/header" /}
+<div class="container-fluid">
+    <div class="row">
+        <div class="card w-100 h-100 border-0 rounded-0">
+            <div class="card-header bg-info text-white">
+                {include file="index/head" /}
+            </div>
+            <div class="card-body">
+                <textarea class="form-control" rows="15">{$license}</textarea>
+                <div class="text-center">
+                    <a href="step1" class="btn btn-info mt-4">{:lang('Accept')}</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{include file="index/footer" /}
